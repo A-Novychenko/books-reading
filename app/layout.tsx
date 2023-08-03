@@ -1,8 +1,9 @@
-import "./globals.css";
 import type {Metadata} from "next";
-import {Montserrat} from "next/font/google";
 
-const montserrat = Montserrat({subsets: ["latin"]});
+import {Header} from "./components/Header";
+
+import {montserrat} from "./fonts";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "BR",
@@ -12,7 +13,10 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>{children}</body>
+      <body className={montserrat.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
