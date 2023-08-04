@@ -1,6 +1,6 @@
 import Link from "next/link";
-import styles from "./Header.module.css";
-import {abril_fatface} from "../../app/fonts";
+import styles from "./Header.module.scss";
+import {abril_fatface} from "../../fonts/fonts";
 
 export const Header = () => {
   return (
