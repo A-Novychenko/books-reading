@@ -1,10 +1,11 @@
 import {FC} from "react";
-import {AuthQuote} from "@/components/AuthQuote/AuthQuote";
+import {AuthQuote} from "@/components/Auth/AuthQuote/AuthQuote";
+import {AuthRegisterForm} from "@/components/Auth/AuthRegisterForm/AuthRegisterForm";
 
 const AuthPage: FC = () => {
   return (
     <div>
-      <div>Form</div>
+      <AuthRegisterForm />
       <AuthQuote />
     </div>
   );
