@@ -1,20 +1,9 @@
 @import 'node_modules/modern-normalize/modern-normalize.css';
 
-
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-/* body {
-  max-width: 1200px;
-  margin-right: auto;
-  margin-left: auto;
-
-} */
-
-
 
 h1,
 h2,
