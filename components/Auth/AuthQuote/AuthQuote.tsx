@@ -1,7 +1,7 @@
 import Image from "next/image";
 import {FC} from "react";
 
-import styles from "./AuthQuote.module.css";
+import styles from "./AuthQuote.module.scss";
 
 export const AuthQuote: FC = () => {
   return (

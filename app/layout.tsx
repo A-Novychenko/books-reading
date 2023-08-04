@@ -2,9 +2,9 @@ import type {Metadata} from "next";
 
 import {Header} from "../components/Header/Header";
 
-import {montserrat} from "./fonts";
-import "./globals.css";
-import styles from "./page.module.css";
+import {montserrat} from "../fonts/fonts";
+import "../styles/globals.css";
+import styles from "../styles/page.module.scss";
 
 export const metadata: Metadata = {
   title: "BR",
