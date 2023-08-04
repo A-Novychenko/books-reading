@@ -22,7 +22,7 @@ export const AuthLoginForm: FC = () => {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
-  // console.log(watch("example")); // watch input value by passing the name of it
+  console.log(watch("example")); // watch input value by passing the name of it
 
   return (
     <section className={styles.auth_form_wrapper}>
