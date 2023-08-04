@@ -5,10 +5,10 @@ import styles from "./authPage.module.scss";
 
 const AuthPage: FC = () => {
   return (
-    <div className={styles.authWrap}>
+    <main className={styles.authWrap}>
       <AuthLoginForm />
       <AuthQuote />
-    </div>
+    </main>
   );
 };
 
