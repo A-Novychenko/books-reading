@@ -1,9 +1,9 @@
 import Image from "next/image";
 import {FC} from "react";
 
-import styles from "./AuthQuote.module.scss";
+import styles from "./AuthQuoteLogin.module.scss";
 
-export const AuthQuote: FC = () => {
+export const AuthQuoteLogin: FC = () => {
   return (
     <div className={styles.wrap}>
       <Image

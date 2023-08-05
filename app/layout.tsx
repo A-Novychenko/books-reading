@@ -16,7 +16,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang="en">
       <body className={montserrat.className}>
         <Header />
-        <div className={styles.container}>{children}</div>
+        <main className={styles.container}>{children}</main>
       </body>
     </html>
   );

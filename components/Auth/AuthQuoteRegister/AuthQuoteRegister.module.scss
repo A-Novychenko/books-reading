@@ -1,0 +1,46 @@
+.wrap {
+  margin-right: auto;
+  margin-left: auto;
+
+  text-align: center;
+}
+.title {
+  padding-bottom: 42px;
+
+  color: #242a37;
+  font-family: Abril Fatface;
+  font-size: 34px;
+  line-height: 1.12;
+}
+
+.item:first-child {
+  padding-bottom: 32px;
+}
+.sub_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 12px;
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+.sub_title {
+  padding-bottom: 14px;
+
+  color: #242a37;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.9;
+}
+.text_item {
+  text-align: left;
+  color: #898f9f;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.img {
+  display: inline-block;
+  margin-right: 12px;
+}
