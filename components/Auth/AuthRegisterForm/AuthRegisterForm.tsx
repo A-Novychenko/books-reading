@@ -2,7 +2,7 @@
 
 import {FC} from "react";
 import {useForm, SubmitHandler} from "react-hook-form";
-import styles from "./AuthLoginForm.module.scss";
+import styles from "./AuthRegisterForm.module.scss";
 import Link from "next/link";
 import {roboto} from "@/fonts/fonts";
 import Image from "next/image";
@@ -12,7 +12,7 @@ type Inputs = {
   exampleRequired: string;
 };
 
-export const AuthLoginForm: FC = () => {
+export const AuthRegisterForm: FC = () => {
   const {
     register,
     handleSubmit,
@@ -22,7 +22,7 @@ export const AuthLoginForm: FC = () => {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
-  console.log(watch("example")); // watch input value by passing the name of it
+  // console.log(watch("example")); // watch input value by passing the name of it
 
   return (
     <section className={styles.auth_form_wrapper}>
@@ -43,11 +43,21 @@ export const AuthLoginForm: FC = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <label className={styles.label}>
+            Name<span className={styles.label_requared}>*</span>
+          </label>
+          <input
+            placeholder="..."
+            className={styles.input}
+            type="name"
+            {...(register("example"), {required: true})}
+          />
+          <label className={styles.label}>
             Email<span className={styles.label_requared}>*</span>
           </label>
           <input
             placeholder="your@email.com"
             className={styles.input}
+            type="email"
             {...(register("example"), {required: true})}
           />
 
@@ -55,8 +65,18 @@ export const AuthLoginForm: FC = () => {
             Password<span className={styles.label_requared}>*</span>
           </label>
           <input
-            placeholder="Password"
+            placeholder="..."
             className={styles.input}
+            type="password"
+            {...register("exampleRequired", {required: true})}
+          />
+          <label className={styles.label}>
+            Confirm password<span className={styles.label_requared}>*</span>
+          </label>
+          <input
+            placeholder="..."
+            className={styles.input}
+            type="password"
             {...register("exampleRequired", {required: true})}
           />
 
@@ -66,9 +86,12 @@ export const AuthLoginForm: FC = () => {
             Login
           </button>
         </form>
-        <Link href="/auth/register" className={styles.register_link}>
-          Register
-        </Link>
+        <p className={styles.login_link_Text}>
+          Already have an account?
+          <Link href="/auth/login" className={styles.register_link}>
+            Log in
+          </Link>
+        </p>
       </div>
     </section>
   );

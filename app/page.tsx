@@ -1,5 +1,10 @@
+import Link from "next/link";
 import styles from "../styles/page.module.scss";
 
 export default function Home() {
-  return <main className={styles.main}></main>;
+  return (
+    <main className={styles.main}>
+      <Link href="/auth">To AUTH</Link>
+    </main>
+  );
 }
