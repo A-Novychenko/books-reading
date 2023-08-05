@@ -1,15 +1,19 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import {FC} from "react";
 import {useForm, SubmitHandler} from "react-hook-form";
-import styles from "./AuthRegisterForm.module.scss";
-import Link from "next/link";
+
 import {roboto} from "@/fonts/fonts";
-import Image from "next/image";
+import {registerUser} from "@/actions/registerUser";
+import styles from "./AuthRegisterForm.module.scss";
 
 type Inputs = {
-  example: string;
-  exampleRequired: string;
+  name: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
 };
 
 export const AuthRegisterForm: FC = () => {
@@ -17,12 +21,35 @@ export const AuthRegisterForm: FC = () => {
     register,
     handleSubmit,
     watch,
+    reset,
+    setError,
     formState: {errors},
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    // console.log("data", data);
+    const {name, email, password, passwordConfirm} = data;
 
-  // console.log(watch("example")); // watch input value by passing the name of it
+    if (password !== passwordConfirm) {
+      setError("password", {
+        type: "custom",
+        message: "Passwords must match!",
+      });
+      setError("passwordConfirm", {
+        type: "custom",
+        message: "Passwords must match!",
+      });
+      return;
+    }
+    registerUser({name, email, password});
+
+    reset();
+  };
+
+  // console.log(watch("name"));
+  // console.log(watch("email"));
+  // console.log(watch("password"));
+  // console.log(watch("passwordConfirm"));
 
   return (
     <section className={styles.auth_form_wrapper}>
@@ -46,20 +73,27 @@ export const AuthRegisterForm: FC = () => {
             Name<span className={styles.label_requared}>*</span>
           </label>
           <input
+            type="text"
             placeholder="..."
             className={styles.input}
-            type="name"
-            {...(register("example"), {required: true})}
+            {...register("name")}
           />
+          {errors.name && (
+            <span className={styles.input_err}>This field is required</span>
+          )}
+
           <label className={styles.label}>
             Email<span className={styles.label_requared}>*</span>
           </label>
           <input
+            type="email"
             placeholder="your@email.com"
             className={styles.input}
-            type="email"
-            {...(register("example"), {required: true})}
+            {...register("email")}
           />
+          {errors.email && (
+            <span className={styles.input_err}>This field is required</span>
+          )}
 
           <label className={styles.label}>
             Password<span className={styles.label_requared}>*</span>
@@ -68,8 +102,16 @@ export const AuthRegisterForm: FC = () => {
             placeholder="..."
             className={styles.input}
             type="password"
-            {...register("exampleRequired", {required: true})}
+            {...register("password", {required: true})}
           />
+          {errors.password && (
+            <span className={styles.input_err}>
+              {errors?.password?.message
+                ? errors?.password?.message
+                : "This field is required"}
+            </span>
+          )}
+
           <label className={styles.label}>
             Confirm password<span className={styles.label_requared}>*</span>
           </label>
@@ -77,10 +119,16 @@ export const AuthRegisterForm: FC = () => {
             placeholder="..."
             className={styles.input}
             type="password"
-            {...register("exampleRequired", {required: true})}
+            {...register("passwordConfirm", {required: true})}
           />
 
-          {errors.exampleRequired && <span>This field is required</span>}
+          {errors.passwordConfirm && (
+            <span className={styles.input_err}>
+              {errors?.passwordConfirm?.message
+                ? errors?.passwordConfirm?.message
+                : "This field is required"}
+            </span>
+          )}
 
           <button className={styles.submit} type="submit">
             Login

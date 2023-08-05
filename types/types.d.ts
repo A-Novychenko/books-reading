@@ -1,4 +1,30 @@
-export interface Book {
+interface IUserStore {
+  user: IUser;
+  loading: boolean;
+  error: boolean;
+  loginUser: () => Promise<void>;
+  registerUser: () => Promise<void>;
+}
+
+interface IUser {
+  name: string;
+  email: string;
+  goingToRead: GoingToRead[];
+  currentlyReading: GoingToRead[];
+  finishedReading: GoingToRead[];
+}
+
+interface IGoingToRead {
+  title: string;
+  author: string;
+  publishYear: number;
+  totalPages: number;
+  pagesFinished: number;
+  _id: string;
+  __v: number;
+}
+
+interface IBook {
   title: string;
   author: string;
   publishYear: number;
@@ -8,20 +34,4 @@ export interface Book {
   __v: number;
 }
 
-export interface User {
-  name: string;
-  email: string;
-  goingToRead: GoingToRead[];
-  currentlyReading: GoingToRead[];
-  finishedReading: GoingToRead[];
-}
-
-export interface GoingToRead {
-  title: string;
-  author: string;
-  publishYear: number;
-  totalPages: number;
-  pagesFinished: number;
-  _id: string;
-  __v: number;
-}
+type registerFunc = (data: Inputs) => Promise<void>;
