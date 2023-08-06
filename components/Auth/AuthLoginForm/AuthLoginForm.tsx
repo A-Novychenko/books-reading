@@ -2,12 +2,12 @@
 
 import {FC} from "react";
 import {useForm, SubmitHandler} from "react-hook-form";
-import styles from "./AuthLoginForm.module.scss";
 import Link from "next/link";
 import {loginUser} from "@/actions/loginUser";
 import {useUser} from "@/store";
 import {GoogleBtn} from "../GoogleBtn/GoogleBtn";
 import {useRouter} from "next/navigation";
+import styles from "./AuthLoginForm.module.scss";
 
 type Inputs = {
   email: string;
