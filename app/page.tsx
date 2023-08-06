@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "../styles/page.module.scss";
+import {redirect, useRouter} from "next/navigation";
 
 export default function Home({
   searchParams,
@@ -9,11 +10,14 @@ export default function Home({
 }) {
   const {accessToken, refreshToken} = searchParams;
 
-  console.log("TOKENS", accessToken, refreshToken);
+  console.log("accessToken", accessToken);
+  console.log("refreshToken", refreshToken);
+
+  redirect("/login");
 
   return (
     <main className={styles.main}>
-      <Link href="/auth">To AUTH</Link>
+      <Link href="/login">To AUTH</Link>
     </main>
   );
 }
