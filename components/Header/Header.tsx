@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./Header.module.scss";
 import {abril_fatface} from "../../fonts/fonts";
+import {AppBar} from "./AppBar/AppBar";
 
 export const Header = () => {
   return (
@@ -13,6 +14,7 @@ export const Header = () => {
             </Link>
           </div>
         </div>
+        <AppBar />
       </div>
     </header>
   );

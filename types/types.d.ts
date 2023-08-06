@@ -1,17 +1,29 @@
 interface IUserStore {
-  user: IUser;
   loading: boolean;
   error: boolean;
-  loginUser: () => Promise<void>;
-  registerUser: () => Promise<void>;
+  isLogin: boolean;
+  accessToken: string;
+  refreshToken: string;
+  sid: string;
+  userData: IUser;
+  loginUserSaveStore: (userData: IUserData) => Promise<void>;
+  logoutUserSaveStore: () => Promise<void>;
+}
+
+interface IUserData {
+  accessToken: string;
+  refreshToken: string;
+  sid: string;
+  userData: IUser;
 }
 
 interface IUser {
   name: string;
   email: string;
-  goingToRead: GoingToRead[];
-  currentlyReading: GoingToRead[];
-  finishedReading: GoingToRead[];
+  goingToRead: any[];
+  currentlyReading: any[];
+  finishedReading: any[];
+  id: string;
 }
 
 interface IGoingToRead {
@@ -35,3 +47,12 @@ interface IBook {
 }
 
 type registerFunc = (data: Inputs) => Promise<void>;
+
+type loginFunc = (data: Inputs) => Promise<LoginUser>;
+
+interface LoginUser {
+  accessToken: string;
+  refreshToken: string;
+  sid: string;
+  userData: UserData;
+}

@@ -1,13 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import {FC} from "react";
 import {useForm, SubmitHandler} from "react-hook-form";
 
-import {roboto} from "@/fonts/fonts";
 import {registerUser} from "@/actions/registerUser";
 import styles from "./AuthRegisterForm.module.scss";
+import {GoogleBtn} from "../GoogleBtn/GoogleBtn";
+import {loginUser} from "@/actions/loginUser";
+import {useRouter} from "next/navigation";
+import {useUser} from "@/store";
 
 type Inputs = {
   name: string;
@@ -20,14 +22,16 @@ export const AuthRegisterForm: FC = () => {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     setError,
     formState: {errors},
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    // console.log("data", data);
+  const loginUserSaveStore = useUser((state) => state.loginUserSaveStore);
+
+  const router = useRouter();
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const {name, email, password, passwordConfirm} = data;
 
     if (password !== passwordConfirm) {
@@ -43,30 +47,19 @@ export const AuthRegisterForm: FC = () => {
     }
     registerUser({name, email, password});
 
+    const res = await loginUser(data);
+    loginUserSaveStore(res);
+
+    reset();
+    router.push("/library");
+
     reset();
   };
-
-  // console.log(watch("name"));
-  // console.log(watch("email"));
-  // console.log(watch("password"));
-  // console.log(watch("passwordConfirm"));
 
   return (
     <section className={styles.auth_form_wrapper}>
       <div className={styles.login_box}>
-        <button className={styles.google_btn} type="button">
-          <Image
-            className={styles.img}
-            src="/google-icon.svg"
-            alt="Google Logo"
-            width={18}
-            height={18}
-            priority
-          />
-          <span>
-            <span className={roboto.className}>GOOGLE</span>
-          </span>
-        </button>
+        <GoogleBtn />
 
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <label className={styles.label}>
@@ -131,7 +124,7 @@ export const AuthRegisterForm: FC = () => {
           )}
 
           <button className={styles.submit} type="submit">
-            Login
+            Register
           </button>
         </form>
         <p className={styles.login_link_Text}>

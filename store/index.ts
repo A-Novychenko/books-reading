@@ -1,45 +1,57 @@
 import {registerUser} from "@/actions/registerUser";
-import {create} from "zustand";
-import {devtools, persist} from "zustand/middleware";
 
-export const useUser = create<IUserStore>()(
+import {devtools, persist} from "zustand/middleware";
+import {shallow} from "zustand/shallow";
+import {createWithEqualityFn} from "zustand/traditional";
+
+export const useUser = createWithEqualityFn<IUserStore>()(
   devtools(
     persist(
       (set) => ({
-        user: {
+        userData: {
           name: "",
           email: "",
           goingToRead: [],
           currentlyReading: [],
           finishedReading: [],
+          id: "",
         },
         loading: false,
         error: false,
-        getUser: async () => {
-          set({loading: true});
-          try {
-            const resp = await fetch(
-              "https://bookread-backend.goit.global/user/books"
-            );
-            const user: IUser = await resp.json();
-            set({user});
-          } catch (error) {
-          } finally {
-            set({loading: false});
-          }
-        },
-        loginUser: async () => {
-          set({loading: true});
+        isLogin: false,
+        accessToken: "",
+        refreshToken: "",
+        sid: "",
+
+        loginUserSaveStore: async (res) => {
+          set({userData: res.userData});
+          set({loading: false});
+          set({isLogin: true});
         },
 
-        registerUser: async () => {
-          set({loading: true});
-          //   const user = await registerUser()
+        logoutUserSaveStore: async () => {
+          set({
+            userData: {
+              name: "",
+              email: "",
+              goingToRead: [],
+              currentlyReading: [],
+              finishedReading: [],
+              id: "",
+            },
+            loading: false,
+            error: false,
+            isLogin: false,
+            accessToken: "",
+            refreshToken: "",
+            sid: "",
+          });
         },
       }),
       {
         name: "books-storage",
       }
     )
-  )
+  ),
+  shallow
 );
