@@ -66,7 +66,7 @@ export const AuthLoginForm: FC = () => {
             Login
           </button>
         </form>
-        <Link href="/auth/register" className={styles.register_link}>
+        <Link href="/register" className={styles.register_link}>
           Register
         </Link>
       </div>
