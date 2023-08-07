@@ -1,22 +1,26 @@
 .container {
-    max-width: 1200px;
-    margin-right: auto;
-    margin-left: auto;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.wrap {
+  display: flex;
 }
 
 .header {
-    box-shadow: 0px 2px 3px 0px rgba(9, 30, 63, 0.10);
+  box-shadow: 0px 2px 3px 0px rgba(9, 30, 63, 0.1);
 }
 
 .logo_wrap {
-    display: inline-block;
-    padding: 16px;
+  display: inline-block;
+  padding: 16px;
 }
 
 .logo {
-    display: inline;
+  display: inline;
 
-    font-size: 20px;
-    color: #242A37;
-    text-decoration: none;
+  font-size: 20px;
+  color: #242a37;
+  text-decoration: none;
 }

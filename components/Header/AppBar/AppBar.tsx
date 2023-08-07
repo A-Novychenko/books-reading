@@ -1,8 +1,13 @@
 "use client";
 
 import {useUser} from "@/store";
+import {useSession, signOut} from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
 import {useRouter} from "next/navigation";
 import {FC} from "react";
+
+import styles from "./AppBar.module.scss";
 
 export const AppBar: FC = () => {
   const [isLogin, userData, logoutUserSaveStore] = useUser((state) => [
@@ -10,6 +15,9 @@ export const AppBar: FC = () => {
     state.userData,
     state.logoutUserSaveStore,
   ]);
+
+  const session = useSession();
+  console.log("session", session);
 
   const router = useRouter();
   const logout = () => {
@@ -19,6 +27,36 @@ export const AppBar: FC = () => {
 
   return (
     <>
+      {session?.data && (
+        <div className={styles.wrap}>
+          <div className={styles.user}>
+            {session.data.user?.image ? (
+              <Image
+                src={`${session.data.user?.image}`}
+                alt={`Photo ${session.data.user?.name}`}
+                width={32}
+                height={32}
+              />
+            ) : (
+              <div
+                style={{
+                  width: "32px",
+                  height: "32px",
+                  backgroundColor: "green",
+                }}
+              ></div>
+            )}
+            <p className={styles.user_name}>{session.data.user?.name}</p>
+          </div>
+          <button
+            className={styles.btn}
+            type="button"
+            onClick={() => signOut({callbackUrl: "/"})}
+          >
+            Logout
+          </button>
+        </div>
+      )}
       {isLogin && (
         <div>
           <div>{userData?.name ? <p>{userData?.name}</p> : <p></p>}</div>
@@ -27,6 +65,9 @@ export const AppBar: FC = () => {
             Logout
           </button>
         </div>
+      )}
+      {!session.data && (
+        <Link href={"/api/auth/signin"}>Login with Google</Link>
       )}
     </>
   );

@@ -1,0 +1,25 @@
+.wrap {
+  display: flex;
+  flex-direction: row;
+
+  width: 100%;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 400px;
+}
+.user_name {
+  margin-left: 20px;
+}
+
+.btn {
+  display: flex;
+  margin-right: 16px;
+}
