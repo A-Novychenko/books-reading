@@ -13,7 +13,7 @@ export default function Home({
   console.log("accessToken", accessToken);
   console.log("refreshToken", refreshToken);
 
-  redirect("/login");
+  // redirect("/login");
 
   return (
     <main className={styles.main}>
