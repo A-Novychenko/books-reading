@@ -32,6 +32,7 @@ export const authConfig: AuthOptions = {
         // If no error and we have user data, return it
         if (res.ok && user) {
           console.log("user", user);
+
           return user as User;
         }
         // Return null if user data could not be retrieved
