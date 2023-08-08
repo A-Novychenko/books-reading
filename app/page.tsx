@@ -2,18 +2,26 @@ import Link from "next/link";
 import styles from "../styles/page.module.scss";
 import {redirect, useRouter} from "next/navigation";
 
-export default function Home({
-  searchParams,
-}: {
-  params: {slug: string};
-  searchParams: {[key: string]: string | string[] | undefined};
-}) {
-  const {accessToken, refreshToken} = searchParams;
+import {authConfig} from "@/configs/auth";
+import {getServerSession} from "next-auth/next";
 
-  console.log("accessToken", accessToken);
-  console.log("refreshToken", refreshToken);
+export default async function Home() {
+  // export default function async Home({
+  //   searchParams,
+  // }: {
+  //   params: {slug: string};
+  //   searchParams: {[key: string]: string | string[] | undefined};
+  // }) {
+  // const {accessToken, refreshToken} = searchParams;
 
-  redirect("/login");
+  // console.log("accessToken", accessToken);
+  // console.log("refreshToken", refreshToken);
+
+  const session = await getServerSession(authConfig);
+
+  if (session?.user) {
+    redirect("/library");
+  }
 
   return (
     <main className={styles.main}>

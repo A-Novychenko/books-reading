@@ -15,6 +15,7 @@ export const registerUser: registerFunc = async (data) => {
     return res.json();
   } catch (err) {
     const error = err as Error;
+
     console.log("error", error);
   }
 };
