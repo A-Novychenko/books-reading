@@ -129,7 +129,7 @@ export const AuthRegisterForm: FC = () => {
         </form>
         <p className={styles.login_link_Text}>
           Already have an account?
-          <Link href="/login" className={styles.register_link}>
+          <Link href="/signin" className={styles.register_link}>
             Log in
           </Link>
         </p>

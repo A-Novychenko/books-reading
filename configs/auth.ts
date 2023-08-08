@@ -10,13 +10,12 @@ export const authConfig: AuthOptions = {
     }),
     CredentialsProvider({
       name: "Credentials",
+      id: "login",
       credentials: {
         email: {label: "Email", type: "text", placeholder: "Email"},
         password: {label: "Password", type: "password"},
       },
       async authorize(credentials, req) {
-        console.log("credentials!!!!!", credentials);
-
         const {email, password}: {email: string; password: string} | any =
           credentials;
         const res = await fetch(
@@ -29,15 +28,33 @@ export const authConfig: AuthOptions = {
         );
         const user = await res.json();
 
-        // If no error and we have user data, return it
-        if (res.ok && user) {
-          console.log("user", user);
-
-          return user as User;
+        if (res.status === 200 && user) {
+          return user;
         }
-        // Return null if user data could not be retrieved
+
         return null;
       },
     }),
   ],
+  pages: {
+    signIn: "/signin",
+  },
+  callbacks: {
+    async jwt({token, user}) {
+      return {...token, ...user};
+    },
+
+    async signIn({user}) {
+      if (user) {
+        return true;
+      }
+      return false;
+    },
+
+    async session({session, token}) {
+      session = {...token, expires: ""};
+
+      return session;
+    },
+  },
 };
