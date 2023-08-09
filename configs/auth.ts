@@ -35,16 +35,46 @@ export const authConfig: AuthOptions = {
         return null;
       },
     }),
+    CredentialsProvider({
+      name: "Credentials",
+      id: "googleAuth",
+      credentials: {
+        accessToken: {label: "accessToken", type: "text"},
+      },
+      async authorize(credentials, req) {
+        console.log("credentials", credentials);
+        // console.log("credentials?.accessToken", credentials?.accessToken);
+        const res = await fetch(
+          "https://bookread-backend.goit.global/user/books",
+          {
+            method: "GET",
+            headers: {authorization: `Bearer ${credentials?.accessToken}`},
+          }
+        );
+        const user = await res.json();
+
+        console.log("UUUUSSSSEEERRR", user);
+
+        if (res.status === 200 && user) {
+          return user;
+        }
+
+        return null;
+      },
+    }),
   ],
   pages: {
     signIn: "/signin",
   },
   callbacks: {
     async jwt({token, user}) {
+      console.log("token", token);
+      console.log("user TOKEN", user);
       return {...token, ...user};
     },
 
     async signIn({user}) {
+      console.log("user signIn", user);
       if (user) {
         return true;
       }
@@ -52,7 +82,8 @@ export const authConfig: AuthOptions = {
     },
 
     async session({session, token}) {
-      session = {...token, expires: ""};
+      // session = { ...token, expires: "" };
+      session.user = token as any;
 
       return session;
     },
