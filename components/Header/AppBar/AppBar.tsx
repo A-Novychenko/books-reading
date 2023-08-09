@@ -35,7 +35,7 @@ export const AppBar: FC = () => {
       {session?.data && (
         <div className={styles.wrap}>
           <div className={styles.user}>
-            {session.data.user?.image ? (
+            {/* {session.data.user.userData ? (
               <Image
                 src={`${session.data.user?.image}`}
                 alt={`Photo ${session.data.user?.name}`}
@@ -50,9 +50,11 @@ export const AppBar: FC = () => {
                   backgroundColor: "green",
                 }}
               ></div>
-            )}
+            )} */}
             <p className={styles.user_name}>
-              {dataTest.data.name || dataTest.data?.userData?.name}
+              {/* {dataTest.data.name || dataTest.data?.userData?.name} */}
+              {/* {session.data.user?.name || session.data?.user?.userData?.name} */}
+              {session.data?.user?.userData?.name}
             </p>
           </div>
           <button
