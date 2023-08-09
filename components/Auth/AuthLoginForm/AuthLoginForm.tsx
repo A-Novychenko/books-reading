@@ -3,11 +3,10 @@
 import {FC} from "react";
 import {useForm, SubmitHandler} from "react-hook-form";
 import Link from "next/link";
-import {loginUser} from "@/actions/loginUser";
-import {useUser} from "@/store";
 import {GoogleBtn} from "../GoogleBtn/GoogleBtn";
 import {useRouter} from "next/navigation";
 import styles from "./AuthLoginForm.module.scss";
+import {signIn} from "next-auth/react";
 
 type Inputs = {
   email: string;
@@ -22,16 +21,21 @@ export const AuthLoginForm: FC = () => {
     formState: {errors},
   } = useForm<Inputs>();
 
-  const loginUserSaveStore = useUser((state) => state.loginUserSaveStore);
-
   const router = useRouter();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const res = await loginUser(data);
-    loginUserSaveStore(res);
+    const res = await signIn("login", {
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    });
 
-    reset();
-    router.push("/library");
+    if (res && !res.error) {
+      reset();
+      router.push("/library");
+    } else {
+      console.log("res", res);
+    }
   };
 
   return (

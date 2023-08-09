@@ -8,22 +8,27 @@ import {useRouter} from "next/navigation";
 import {FC} from "react";
 
 import styles from "./AppBar.module.scss";
+import {getServerSession} from "next-auth/next";
+import {authConfig} from "@/configs/auth";
 
 export const AppBar: FC = () => {
-  const [isLogin, userData, logoutUserSaveStore] = useUser((state) => [
-    state.isLogin,
-    state.userData,
-    state.logoutUserSaveStore,
-  ]);
+  // const [isLogin, userData, logoutUserSaveStore] = useUser((state) => [
+  //   state.isLogin,
+  //   state.userData,
+  //   state.logoutUserSaveStore,
+  // ]);
 
   const session = useSession();
+  // const session = getServerSession(authConfig);
   console.log("session", session);
 
-  const router = useRouter();
-  const logout = () => {
-    logoutUserSaveStore();
-    router.push("/");
-  };
+  const dataTest: any = {...session};
+
+  // const router = useRouter();
+  // const logout = () => {
+  //   logoutUserSaveStore();
+  //   router.push("/");
+  // };
 
   return (
     <>
@@ -46,18 +51,20 @@ export const AppBar: FC = () => {
                 }}
               ></div>
             )}
-            <p className={styles.user_name}>{session.data.user?.name}</p>
+            <p className={styles.user_name}>
+              {dataTest.data.name || dataTest.data?.userData?.name}
+            </p>
           </div>
           <button
             className={styles.btn}
             type="button"
-            onClick={() => signOut({callbackUrl: "/"})}
+            onClick={() => signOut({callbackUrl: "/signin"})}
           >
             Logout
           </button>
         </div>
       )}
-      {isLogin && (
+      {/* {isLogin && (
         <div>
           <div>{userData?.name ? <p>{userData?.name}</p> : <p></p>}</div>
 
@@ -66,9 +73,7 @@ export const AppBar: FC = () => {
           </button>
         </div>
       )}
-      {!session.data && (
-        <Link href={"/api/auth/signin"}>Login with Google</Link>
-      )}
+      {!session.data && <Link href={"/signin"}>Login with Google</Link>} */}
     </>
   );
 };
