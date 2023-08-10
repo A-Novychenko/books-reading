@@ -1,15 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import {FC} from "react";
 import {useForm, SubmitHandler} from "react-hook-form";
-
-import {registerUser} from "@/actions/registerUser";
-import styles from "./AuthRegisterForm.module.scss";
-import {GoogleBtn} from "../GoogleBtn/GoogleBtn";
-import {loginUser} from "@/actions/loginUser";
+import Link from "next/link";
 import {useRouter} from "next/navigation";
-import {useUser} from "@/store";
+import {signIn} from "next-auth/react";
+
+import {GoogleBtn} from "../GoogleBtn/GoogleBtn";
+
+import styles from "./AuthRegisterForm.module.scss";
 
 type Inputs = {
   name: string;
@@ -27,8 +26,6 @@ export const AuthRegisterForm: FC = () => {
     formState: {errors},
   } = useForm<Inputs>();
 
-  const loginUserSaveStore = useUser((state) => state.loginUserSaveStore);
-
   const router = useRouter();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -45,15 +42,31 @@ export const AuthRegisterForm: FC = () => {
       });
       return;
     }
-    registerUser({name, email, password});
 
-    const res = await loginUser(data);
-    loginUserSaveStore(res);
+    const resReg = await fetch(
+      "https://bookread-backend.goit.global/auth/register",
+      {
+        method: "POST",
+        body: JSON.stringify({email, password, name}),
+        headers: {"Content-Type": "application/json"},
+      }
+    );
+    const resRegData = await resReg.json();
 
-    reset();
-    router.push("/library");
+    if (resRegData && !resRegData.error) {
+      const res = await signIn("login", {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
 
-    reset();
+      if (res && !res.error) {
+        reset();
+        router.push("/library");
+      } else {
+        console.log("res", res);
+      }
+    }
   };
 
   return (

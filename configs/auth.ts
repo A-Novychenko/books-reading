@@ -42,8 +42,6 @@ export const authConfig: AuthOptions = {
         accessToken: {label: "accessToken", type: "text"},
       },
       async authorize(credentials, req) {
-        console.log("credentials", credentials);
-        // console.log("credentials?.accessToken", credentials?.accessToken);
         const res = await fetch(
           "https://bookread-backend.goit.global/user/books",
           {
@@ -53,10 +51,10 @@ export const authConfig: AuthOptions = {
         );
         const user = await res.json();
 
-        console.log("UUUUSSSSEEERRR", user);
-
         if (res.status === 200 && user) {
-          return user;
+          const userData: any = {...credentials, userData: user};
+
+          return userData;
         }
 
         return null;
@@ -82,7 +80,6 @@ export const authConfig: AuthOptions = {
     },
 
     async session({session, token}) {
-      // session = { ...token, expires: "" };
       session.user = token as any;
 
       return session;
