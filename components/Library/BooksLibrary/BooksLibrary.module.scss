@@ -1,0 +1,40 @@
+.goingToRead__item {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  width: 280px;
+  background: #fff;
+  box-shadow: 0px 2px 3px 0px rgba(9, 30, 63, 0.1);
+  margin-bottom: 16px;
+  padding: 20px;
+}
+
+.goingToRead__title {
+  color: #242a37;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.goingToRead__title {
+  color: #898f9f;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.goingToRead__value {
+  color: #242a37;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.goingToRead__wrapper {
+  display: flex;
+  align-content: stretch;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.goingToRead__name {
+}
