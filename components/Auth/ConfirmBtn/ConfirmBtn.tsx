@@ -29,20 +29,5 @@ export const ConfirmBtn: FC = () => {
     handler();
   }, [push, searchParams]);
 
-  const handler = async () => {
-    const accessToken = searchParams.get("accessToken");
-
-    const res = await signIn("googleAuth", {
-      accessToken,
-      redirect: false,
-    });
-
-    if (res && res.ok) {
-      push("/library");
-    } else {
-      console.log("res", res);
-    }
-  };
-
   return <></>;
 };
