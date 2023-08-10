@@ -1,12 +1,17 @@
 import Link from "next/link";
-import {FC} from "react";
+import { FC } from "react";
+
+// Start
+import { Info } from "@/components/Library/Info/Info";
+import { Books } from "@/components/Library/BooksLibrary/BooksLibrary";
+// End
 
 const LibraryPage: FC = () => {
   return (
     <div>
       <h2>Library</h2>
       <Link href="/">Home</Link>
-      <p>
+      {/* <p>
         Contrary to popular belief, Lorem Ipsum is not simply random text. It
         has roots in a piece of classical Latin literature from 45 BC, making it
         over 2000 years old. Richard McClintock, a Latin professor at
@@ -23,7 +28,8 @@ const LibraryPage: FC = () => {
         de Finibus Bonorum et Malorum by Cicero are also reproduced in their
         exact original form, accompanied by English versions from the 1914
         translation by H. Rackham.
-      </p>
+      </p> */}
+      <Info />
     </div>
   );
 };
