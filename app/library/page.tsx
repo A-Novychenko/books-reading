@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {FC} from "react";
+import { FC } from "react";
 
 const LibraryPage: FC = () => {
   return (

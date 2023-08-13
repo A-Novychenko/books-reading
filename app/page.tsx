@@ -1,9 +1,9 @@
 import Link from "next/link";
 import styles from "../styles/page.module.scss";
-import {redirect, useRouter} from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
-import {authConfig} from "@/configs/auth";
-import {getServerSession} from "next-auth/next";
+import { authConfig } from "@/configs/auth";
+import { getServerSession } from "next-auth/next";
 
 export default async function Home() {
   const session = await getServerSession(authConfig);
