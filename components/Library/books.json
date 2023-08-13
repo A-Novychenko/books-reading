@@ -1,0 +1,110 @@
+[
+  {
+    "_id": "64d53fa420464d1828468d89",
+    "title": "The Book of Five Rings",
+    "author": "Miyamoto Musashi",
+    "publishYear": 1643,
+    "pagesTotal": 110,
+    "pagesFinished": 0,
+    "__v": 0
+  },
+  {
+    "_id": "64d5405f20464d1828468d8b",
+    "title": "Мистецтво говорити. Таємниці ефективного спілкування",
+    "author": "Джеймс Борг (Джеймс Борґ)",
+    "publishYear": 2016,
+    "pagesTotal": 304,
+    "pagesFinished": 0,
+    "__v": 0
+  },
+  {
+    "_id": "64d540a820464d1828468d8c",
+    "title": "Атомні звички. Легкий і перевірений спосіб набути корисних звичок і позбутися звичок шкідливих",
+    "author": "Джеймс Клір",
+    "publishYear": 2021,
+    "pagesTotal": 304,
+    "pagesFinished": 0,
+    "__v": 0
+  },
+  {
+    "_id": "64d5411f20464d1828468d8d",
+    "title": "Кров і попіл. Книга 1. Із крові й попелу",
+    "author": "Дженніфер Л. Арментраут",
+    "publishYear": 2022,
+    "pagesTotal": 608,
+    "pagesFinished": 0,
+    "__v": 0
+  },
+  {
+    "_id": "64d5416220464d1828468d8e",
+    "title": "Покинь якщо кохаєш",
+    "author": "Коллін Гувер (Колін Гувер)",
+    "publishYear": 2016,
+    "pagesTotal": 300,
+    "pagesFinished": 0,
+    "__v": 0
+  },
+  {
+    "_id": "64d541a820464d1828468d8f",
+    "title": "Квартира на двох",
+    "author": "Пет О'Лірі",
+    "publishYear": 2019,
+    "pagesTotal": 250,
+    "pagesFinished": 0,
+    "__v": 0
+  },
+  {
+    "_id": "64d541de20464d1828468d90",
+    "title": "Багатий тато, бідний тато",
+    "author": "Роберт Кійосакі",
+    "publishYear": 1997,
+    "pagesTotal": 128,
+    "pagesFinished": 0,
+    "__v": 0
+  },
+  {
+    "_id": "64d5420420464d1828468d91",
+    "title": "Чоловік на одну ніч",
+    "author": "Наталі Ліон",
+    "publishYear": 2022,
+    "pagesTotal": 246,
+    "pagesFinished": 0,
+    "__v": 0
+  },
+  {
+    "_id": "64d5422920464d1828468d92",
+    "title": "Дисципліна – це свобода",
+    "author": "Джоко Віллінк",
+    "publishYear": 2022,
+    "pagesTotal": 256,
+    "pagesFinished": 0,
+    "__v": 0
+  },
+  {
+    "_id": "64d5425020464d1828468d93",
+    "title": "12 правил життя. Як побороти хаос",
+    "author": "Джордан Пітерсон",
+    "publishYear": 2019,
+    "pagesTotal": 320,
+    "pagesFinished": 0,
+    "__v": 0
+  },
+  {
+    "_id": "64d5427b20464d1828468d94",
+    "title": "Купи собі той довбаний букет: та інші способи зібратися докупи від тієї, котрій вдалось",
+    "author": "Тара Шустер",
+    "publishYear": 2019,
+    "pagesTotal": 300,
+    "pagesFinished": 0,
+    "__v": 0
+  },
+  {
+    "_id": "64d542a720464d1828468d95",
+    "title": "Село не люди – 2. Добити свідка",
+    "author": "Люко Дашвар",
+    "publishYear": 2021,
+    "pagesTotal": 450,
+    "pagesFinished": 0,
+    "__v": 0
+  }
+]

@@ -22,4 +22,37 @@
 .btn {
   display: flex;
   margin-right: 16px;
+
+  border: transparent;
+  background-color: transparent;
+
+  color: #242a37;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 2.71;
+  text-decoration-line: underline;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background-color: #fca3a0;
+    color: #242a37;
+  }
+  &:active {
+    color: #242a37;
+  }
+}
+.letter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33px;
+  height: 33px;
+
+  border-radius: 50%;
+  background-color: #f5f7fa;
+
+  color: #242a37;
+  font-size: 14px;
+  font-weight: 600;
 }
