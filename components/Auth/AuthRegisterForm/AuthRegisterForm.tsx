@@ -43,29 +43,33 @@ export const AuthRegisterForm: FC = () => {
       return;
     }
 
-    const resReg = await fetch(
-      "https://bookread-backend.goit.global/auth/register",
-      {
-        method: "POST",
-        body: JSON.stringify({email, password, name}),
-        headers: {"Content-Type": "application/json"},
-      }
-    );
-    const resRegData = await resReg.json();
+    try {
+      const resReg = await fetch(
+        "https://bookread-backend.goit.global/auth/register",
+        {
+          method: "POST",
+          body: JSON.stringify({email, password, name}),
+          headers: {"Content-Type": "application/json"},
+        }
+      );
+      const resRegData = await resReg.json();
 
-    if (resRegData && !resRegData.error) {
-      const res = await signIn("login", {
-        email: data.email,
-        password: data.password,
-        redirect: false,
-      });
+      if (resRegData && !resRegData.error) {
+        const res = await signIn("login", {
+          email: data.email,
+          password: data.password,
+          redirect: false,
+        });
 
-      if (res && !res.error) {
-        reset();
-        router.push("/library");
-      } else {
-        console.log("res", res);
+        if (res && !res.error) {
+          reset();
+          router.push("/library");
+        } else {
+          console.log("res", res);
+        }
       }
+    } catch (e) {
+      console.log("e", e);
     }
   };
 

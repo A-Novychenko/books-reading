@@ -4,14 +4,9 @@ import {FC} from "react";
 import {useForm, SubmitHandler} from "react-hook-form";
 import Link from "next/link";
 import {GoogleBtn} from "../GoogleBtn/GoogleBtn";
-import {useRouter} from "next/navigation";
+import {redirect, useRouter} from "next/navigation";
 import styles from "./AuthLoginForm.module.scss";
 import {signIn} from "next-auth/react";
-
-type Inputs = {
-  email: string;
-  password: string;
-};
 
 export const AuthLoginForm: FC = () => {
   const {
@@ -24,18 +19,24 @@ export const AuthLoginForm: FC = () => {
   const router = useRouter();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const res = await signIn("login", {
-      email: data.email,
-      password: data.password,
-      redirect: false,
-    });
+    try {
+      const res = await signIn("login", {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
 
-    if (res && !res.error) {
-      reset();
-      router.push("/library");
-    } else {
-      console.log("res", res);
-    }
+      if (res && !res.error) {
+        reset();
+
+        router.push("/library");
+      } else {
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!");
+        // router.push("/signin");
+        throw new Error("LOGIN ERROR");
+        //вивести нотіфікашку!!!
+      }
+    } catch (error) {}
   };
 
   return (

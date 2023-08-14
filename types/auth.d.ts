@@ -46,13 +46,18 @@ interface IBook {
   __v: number;
 }
 
-type registerFunc = (data: Inputs) => Promise<void>;
-
-type loginFunc = (data: Inputs) => Promise<LoginUser>;
-
 interface LoginUser {
   accessToken: string;
   refreshToken: string;
   sid: string;
   userData: UserData;
 }
+
+type registerFunc = (data: Inputs) => Promise<void>;
+
+type loginFunc = (data: Inputs) => Promise<LoginUser>;
+
+type Inputs = {
+  email: string;
+  password: string;
+};
