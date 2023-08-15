@@ -15,7 +15,7 @@ export default function Error({
 
   return (
     <div>
-      <h2>Помилку спіймав SIGNIN_ERROR!</h2>
+      <h2>Помилку спіймав REGISTER_ERROR!</h2>
       <p>
         Можливо це тимчасова помилка, спробуй натиснути Try again що викличе
         метод reset

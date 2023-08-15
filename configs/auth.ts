@@ -67,9 +67,11 @@ export const authConfig: AuthOptions = {
       },
     }),
   ],
+  session: {
+    strategy: "jwt",
+  },
   pages: {
     signIn: "/signin",
-    // error: "/error",
   },
   callbacks: {
     async jwt({token, user}) {
