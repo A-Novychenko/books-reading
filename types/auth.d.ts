@@ -37,6 +37,7 @@ interface IGoingToRead {
 }
 
 interface IBook {
+  id: Key | null | undefined;
   title: string;
   author: string;
   publishYear: number;
