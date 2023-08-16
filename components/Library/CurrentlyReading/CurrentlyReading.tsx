@@ -1,6 +1,6 @@
 import styles from "./CurrentlyReading.module.scss";
 
-export const CurrentlyReading = ({ readingBook }) => {
+export const CurrentlyReading:any = ({ readingBook }:{readingBook:any}) => {
   return (
     <>
       <table className={styles.table}>
