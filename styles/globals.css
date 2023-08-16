@@ -1,7 +1,7 @@
-@import 'node_modules/modern-normalize/modern-normalize.css';
+@import "node_modules/modern-normalize/modern-normalize.css";
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -45,4 +45,12 @@ img {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   margin: -1px;
+}
+
+/* * {
+  outline: 1px solid tomato;
+} */
+
+body {
+  background: #f6f7fb;
 }
