@@ -1,9 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-module.exports = nextConfig;
-
-module.exports = {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -14,4 +10,16 @@ module.exports = {
       },
     ],
   },
+
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/signin",
+        permanent: true,
+      },
+    ];
+  },
 };
+
+module.exports = nextConfig;
