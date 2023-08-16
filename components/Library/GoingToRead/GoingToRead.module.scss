@@ -1,0 +1,112 @@
+// table
+@media screen and (max-width: 767px) {
+  .table {
+    border: 0;
+    width: 100%;
+
+    & thead {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+  }
+
+  .table__caption {
+    text-align: left;
+    color: #242a37;
+    font-size: 19px;
+    font-weight: 600;
+
+    margin-bottom: 20px;
+  }
+
+  // header table
+  .table__headerRow,
+  .table__bodyRow {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .table__headerRow {
+    width: 60px;
+  }
+
+  .table__header {
+  }
+
+  // body table
+
+  .table__bodyRow {
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0px 2px 3px 0px rgba(9, 30, 63, 0.1);
+  }
+
+  .table__data {
+    display: block;
+    text-align: left;
+    margin-bottom: 12px;
+
+    &::before {
+      content: attr(data-label);
+      width: 90px;
+      float: left;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+//
+
+@media screen and (min-width: 768px) {
+  .table {
+    // border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: auto;
+
+    margin-bottom: 16px;
+  }
+
+  .table__caption {
+    color: #242a37;
+    font-size: 19px;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  // header table
+
+  .table__headerRow {
+  }
+
+  .table__header {
+    color: #898f9f;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  // body table
+
+  .table__bodyRow {
+    margin-bottom: 8px;
+    background: #fff;
+    box-shadow: 0px 2px 3px 0px rgba(9, 30, 63, 0.1);
+  }
+
+  .table__data {
+    padding: 22px;
+  }
+}
