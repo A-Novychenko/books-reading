@@ -1,6 +1,6 @@
 import styles from "./FinishedReading.module.scss";
 
-export const FinishedReading = ({ alreadyBook }) => {
+export const FinishedReading: any = ({alreadyBook}: {alreadyBook: any}) => {
   return (
     <>
       <table className={styles.table}>

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./GoingToRead.module.scss";
 
-export const GoingToRead = ({ bookToRead }) => {
+export const GoingToRead: any = ({bookToRead}: {bookToRead: any}) => {
   return (
     <>
       <table className={styles.table}>
