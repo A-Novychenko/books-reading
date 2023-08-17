@@ -1,7 +1,19 @@
 import React from "react";
 import styles from "./GoingToRead.module.scss";
 
-export const GoingToRead: any = ({bookToRead}: {bookToRead: any}) => {
+interface Book {
+  _id: string;
+  title: string;
+  author: string;
+  publishYear: number;
+  pagesTotal: number;
+}
+
+interface GoingToReadProps {
+  bookToRead: Book[];
+}
+
+export const GoingToRead: React.FC<GoingToReadProps> = ({ bookToRead }) => {
   return (
     <>
       <table className={styles.table}>
@@ -15,7 +27,7 @@ export const GoingToRead: any = ({bookToRead}: {bookToRead: any}) => {
           </tr>
         </thead>
         <tbody>
-          {bookToRead.map((book: any) => (
+          {bookToRead.map((book) => (
             <tr className={styles.table__bodyRow} key={book._id}>
               <td className={styles.table__data}>{book.title}</td>
               <td className={styles.table__data} data-label="Author">
