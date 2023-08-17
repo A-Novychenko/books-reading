@@ -1,70 +1,68 @@
-.container{
+.container {
   max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
- 
-  
 }
 
 .form {
-    display: flex;
-    align-items: flex-end;
-    
-    padding-left: 16px;
-    gap: 16px;
-    padding-top: 40px;
+  display: flex;
+  align-items: flex-end;
+
+  padding-left: 16px;
+  gap: 16px;
+  padding-top: 40px;
+  margin-bottom: 40px;
 }
 
-.container_label{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.container_label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .label {
-    color: #898F9F;
-font-family: Montserrat;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+  color: #898f9f;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
-.input{
-border: 1px solid #A6ABB9;
-background: #F6F7FB;
-height: 42px;
+.input {
+  border: 1px solid #a6abb9;
+  background: #f6f7fb;
+  height: 42px;
 }
 
 .input:focus {
-    border: 1px solid #ffff;
-    outline: none;
-    background: #FFF;
-box-shadow: 0px 1px 2px 0px rgba(29, 29, 27, 0.15) inset; 
+  border: 1px solid #ffff;
+  outline: none;
+  background: #fff;
+  box-shadow: 0px 1px 2px 0px rgba(29, 29, 27, 0.15) inset;
 }
 
-.input::placeholder{
-  color: #A6ABB9;
-font-family: Montserrat; 
-padding-left: 12px;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+.input::placeholder {
+  color: #a6abb9;
+  font-family: Montserrat;
+  padding-left: 12px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.btn{
-    width: 181px;
-height: 42px;
-margin-left: 32px;
-flex-shrink: 0;
-border: 1px solid #A6ABB9;
-background: #F6F7FB;
-cursor: pointer;
-
+.btn {
+  width: 181px;
+  height: 42px;
+  margin-left: 32px;
+  flex-shrink: 0;
+  border: 1px solid #a6abb9;
+  background: #f6f7fb;
+  cursor: pointer;
 }
 
-.btn:hover{
-    border: 1px solid var(--deep-blue, #242A37);
-background: #F6F7FB;
+.btn:hover {
+  border: 1px solid var(--deep-blue, #242a37);
+  background: #f6f7fb;
 }

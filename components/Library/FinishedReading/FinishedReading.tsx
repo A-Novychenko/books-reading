@@ -1,6 +1,22 @@
+import React from "react";
 import styles from "./FinishedReading.module.scss";
 
-export const FinishedReading: any = ({alreadyBook}: {alreadyBook: any}) => {
+interface Book {
+  _id: string;
+  title: string;
+  author: string;
+  publishYear: number;
+  pagesTotal: number;
+  rating?: number;
+}
+
+interface FinishedReadingProps {
+  alreadyBook: Book[];
+}
+
+export const FinishedReading: React.FC<FinishedReadingProps> = ({
+  alreadyBook,
+}) => {
   return (
     <>
       <table className={styles.table}>
@@ -26,7 +42,7 @@ export const FinishedReading: any = ({alreadyBook}: {alreadyBook: any}) => {
           </tr>
         </thead>
         <tbody>
-          {alreadyBook.map((book: any) => (
+          {alreadyBook.map((book) => (
             <tr className={styles.table__bodyRow} key={book._id}>
               <td className={styles.table__data}>{book.title}</td>
               <td className={styles.table__data} data-label="Author">
