@@ -1,25 +1,22 @@
-import Link from "next/link";
-import { FC } from "react";
+import {FC} from "react";
+import {getServerSession} from "next-auth/next";
+import {redirect} from "next/navigation";
+import {authConfig} from "@/configs/auth";
+import {Library} from "@/components/Library/Library";
+import {AddBookForm} from "@/components/Library/BooksForm/Form";
 
-// Start
-import { Info } from "@/components/Library/Info/Info";
+const LibraryPage: FC = async () => {
+  const session = await getServerSession(authConfig);
 
-import { Library } from "@/components/Library/Library";
+  if (!session) {
+    redirect("/signin");
+  }
 
-// import { Books } from "@/components/Library/BooksLibrary/BooksLibrary";
-import { AddBookForm } from "@/components/Library/BooksForm/Form";
-import { BookList } from "@/components/Library/BooksList/BooksList";
-
-// End
-
-const LibraryPage: FC = () => {
   return (
     <section>
       <h1 className="visually-hidden">Library</h1>
       <AddBookForm />
       <Library />
-
-      {/* <BookList /> */}
     </section>
   );
 };
