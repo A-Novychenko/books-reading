@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import styles from "./GoingToRead.module.scss";
 
 interface Book {
@@ -29,7 +30,19 @@ export const GoingToRead: React.FC<GoingToReadProps> = ({ bookToRead }) => {
         <tbody>
           {bookToRead.map((book) => (
             <tr className={styles.table__bodyRow} key={book._id}>
-              <td className={styles.table__data}>{book.title}</td>
+              <td>
+                <span className={styles.table__bookTitle}>
+                  <Image
+                    className={styles.table__bookImage}
+                    src="/libraryGoingToRead.svg"
+                    alt="library-icon"
+                    width={22}
+                    height={17}
+                    priority
+                  />
+                  <span>{book.title}</span>
+                </span>
+              </td>
               <td className={styles.table__data} data-label="Author">
                 {book.author}{" "}
               </td>

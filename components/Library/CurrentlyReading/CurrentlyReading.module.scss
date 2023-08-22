@@ -51,6 +51,7 @@
     display: block;
     text-align: left;
     margin-bottom: 12px;
+    padding-left: 38px;
 
     &::before {
       content: attr(data-label);
@@ -61,6 +62,12 @@
     &:last-child {
       border-bottom: 0;
     }
+  }
+
+  .table__bookTitle {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
   }
 }
 //
@@ -108,5 +115,11 @@
 
   .table__data {
     padding: 22px;
+  }
+
+  .table__bookTitle {
+    display: flex;
+    gap: 18px;
+    padding-left: 20px;
   }
 }
