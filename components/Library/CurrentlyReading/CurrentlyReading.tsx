@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from "next/image";
 import styles from "./CurrentlyReading.module.scss";
 
 interface Book {
@@ -32,7 +32,19 @@ export const CurrentlyReading: React.FC<CurrentlyReadingProps> = ({
         <tbody>
           {readingBook.map((book) => (
             <tr className={styles.table__bodyRow} key={book._id}>
-              <td className={styles.table__data}>{book.title}</td>
+              <td>
+                <span className={styles.table__bookTitle}>
+                  <Image
+                    className={styles.table__bookImage}
+                    src="/libraryNow.svg"
+                    alt="library-icon"
+                    width={22}
+                    height={17}
+                    priority
+                  />
+                  <span>{book.title}</span>
+                </span>
+              </td>
               <td className={styles.table__data} data-label="Author">
                 {book.author}{" "}
               </td>
