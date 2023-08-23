@@ -7,8 +7,8 @@ import { CurrentlyReading } from "./CurrentlyReading/CurrentlyReading";
 import { FinishedReading } from "./FinishedReading/FinishedReading";
 import { GoingToRead } from "./GoingToRead/GoingToRead";
 import { Info } from "./Info/Info";
-
-// import books from "./books.json";
+import { Loader } from "../Loader/Loader";
+import { AddBookForm } from "./BooksForm/Form";
 
 interface Books {
   _id: string;
@@ -38,6 +38,13 @@ export const Library: React.FC = () => {
     finishedReading: [],
   });
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [dataUpdated, setDataUpdated] = useState<boolean>(false);
+
+  const handleBookUpdate = (bookUpdated: boolean) => {
+    setDataUpdated(bookUpdated);
+  };
+
   useEffect(() => {
     const fetchBooks = async () => {
       if (session) {
@@ -61,37 +68,39 @@ export const Library: React.FC = () => {
         } catch (error) {
           console.error("Error fetching books:", error);
         }
+        setIsLoading(false);
       }
     };
 
     fetchBooks();
-  }, [session]);
-
-  console.log("ARRAY ====>>>", userBooks.finishedReading.length);
-  console.log("ARRAY ====>>>", userBooks.currentlyReading.length);
-
-  console.log("ARRAY ====>>>", userBooks.goingToRead.length);
+    if (dataUpdated) {
+      setDataUpdated(false);
+    }
+  }, [dataUpdated, session]);
 
   const allBooks =
     userBooks.finishedReading.length +
     userBooks.currentlyReading.length +
     userBooks.goingToRead.length;
 
-  console.log("ALL BOOKS ===>>", allBooks);
-
   return (
     <>
-      {userBooks.finishedReading.length > 0 && (
+      {isLoading && <Loader />}
+      {!isLoading && <AddBookForm handleBookUpdate={handleBookUpdate} />}
+      {!isLoading && userBooks.finishedReading.length > 0 && (
         <FinishedReading alreadyBook={userBooks.finishedReading} />
       )}
-      {userBooks.currentlyReading.length > 0 && (
+      {!isLoading && userBooks.currentlyReading.length > 0 && (
         <CurrentlyReading readingBook={userBooks.currentlyReading} />
       )}
-      {userBooks.goingToRead.length > 0 && (
+      {!isLoading && userBooks.goingToRead.length > 0 && (
         <GoingToRead bookToRead={userBooks.goingToRead} />
       )}
-      {/* {allBooks && <Info />} */}
-      {allBooks === 0 ? <Info /> : <></>}
+
+      {!isLoading && allBooks === 0 ? <Info /> : <></>}
     </>
   );
 };
+function handleBookUbdate(bookUpdate: any) {
+  throw new Error("Function not implemented.");
+}
